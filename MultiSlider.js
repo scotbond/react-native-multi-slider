@@ -53,8 +53,13 @@ export default class MultiSlider extends React.Component {
   constructor(props) {
     super(props);
 
-    if(this.props.minMarkerOverlapDistance > 0 && this.props.minMarkerOverlapStepDistance > 0) {
-      console.error('You should provide either "minMarkerOverlapDistance" or "minMarkerOverlapStepDistance", not both. Expect unreliable results.');
+    if (
+      this.props.minMarkerOverlapDistance > 0 &&
+      this.props.minMarkerOverlapStepDistance > 0
+    ) {
+      console.error(
+        'You should provide either "minMarkerOverlapDistance" or "minMarkerOverlapStepDistance", not both. Expect unreliable results.',
+      );
     }
 
     this.optionsArray =
@@ -157,9 +162,7 @@ export default class MultiSlider extends React.Component {
       ? gestureState.dx
       : gestureState.dy;
 
-    const unconfined = I18nManager.isRTL
-      ? this.state.pastOne - accumDistance
-      : accumDistance + this.state.pastOne;
+    const unconfined = accumDistance + this.state.pastOne;
     var bottom = this.props.markerSize / 2;
     var trueTop =
       this.state.positionTwo -
@@ -230,9 +233,7 @@ export default class MultiSlider extends React.Component {
       ? gestureState.dx
       : gestureState.dy;
 
-    const unconfined = I18nManager.isRTL
-      ? this.state.pastTwo - accumDistance
-      : accumDistance + this.state.pastTwo;
+    const unconfined = accumDistance + this.state.pastTwo;
     var bottom =
       this.state.positionOne +
       (this.props.allowOverlap
